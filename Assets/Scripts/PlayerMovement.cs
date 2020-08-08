@@ -31,7 +31,7 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         float moveX = 0;
-        if (Input.GetAxis("Horizontal") < -0)
+        if (Input.GetAxis("Horizontal") < 0)
         {
             moveX = -1;
         }
@@ -57,8 +57,9 @@ public class PlayerMovement : MonoBehaviour
         //r2d.AddForce(new Vector2(0, -Physics.gravity.y * gravityScale * Time.deltaTime));
         if (!IsGrounded())
         {
-            r2d.velocity = new Vector2(r2d.velocity.x, r2d.velocity.y+Physics.gravity.y * gravityScale * Time.deltaTime);
+            r2d.velocity = new Vector2(r2d.velocity.x, r2d.velocity.y + Physics.gravity.y * gravityScale * Time.deltaTime);
         }
+        //This is bad
         if (IsGrounded() && !isJumping)
         {
             r2d.velocity = new Vector2(r2d.velocity.x, 0f);
